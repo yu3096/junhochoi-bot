@@ -7,9 +7,15 @@ import java.io.IOException;
 import javax.security.auth.login.LoginException;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BotApplication {
+  private static Logger logger = LoggerFactory.getLogger(BotApplication.class);
+
   public static void main(String[] args) throws LoginException {
+    logger.info("---------------- 최준호 봇을 시작합니다.");
+
     try {
       JunhoChoiProperties prop = new JunhoChoiProperties();
     }
