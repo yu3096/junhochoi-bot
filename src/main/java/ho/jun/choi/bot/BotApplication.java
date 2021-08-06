@@ -15,7 +15,7 @@ public class BotApplication {
 
   public static void main(String[] args) throws LoginException {
     logger.info("---------------- 최준호 봇을 시작합니다.");
-    logger.info(System.getProperty("discord.token"));
+    logger.info(System.getProperty("discordToken"));
 
     try {
       JunhoChoiProperties prop = new JunhoChoiProperties();
