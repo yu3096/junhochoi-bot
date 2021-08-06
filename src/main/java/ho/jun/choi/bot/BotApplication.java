@@ -15,6 +15,7 @@ public class BotApplication {
 
   public static void main(String[] args) throws LoginException {
     logger.info("---------------- 최준호 봇을 시작합니다.");
+    logger.info(System.getProperty("TOKEN"));
 
     try {
       JunhoChoiProperties prop = new JunhoChoiProperties();
@@ -22,7 +23,7 @@ public class BotApplication {
     catch (IOException e) {
       e.printStackTrace();
     }
-    JDA api = JDABuilder.createDefault("발급받은 키를 넣어주세오")
+    JDA api = JDABuilder.createDefault("ODcwOTcyMTg4MTQ3MjE2NDA0.YQUiDw.Ui4sKCF6YCoeBxvDvK3ee75Nqsw")
                         .addEventListeners(new JunhoChoiBotReady())
                         .addEventListeners(new JunhoChoiBotProtocol())
                         .build();
