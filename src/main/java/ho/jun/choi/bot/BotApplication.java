@@ -23,7 +23,7 @@ public class BotApplication {
     catch (IOException e) {
       e.printStackTrace();
     }
-    JDA api = JDABuilder.createDefault(System.getProperty("discord.token"))
+    JDA api = JDABuilder.createDefault(System.getProperty("discordToken"))
                         .addEventListeners(new JunhoChoiBotReady())
                         .addEventListeners(new JunhoChoiBotProtocol())
                         .build();
