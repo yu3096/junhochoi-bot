@@ -5,6 +5,8 @@ import ho.jun.choi.bot.listener.JunhoChoiBotProtocol;
 import ho.jun.choi.bot.listener.JunhoChoiBotReady;
 import ho.jun.choi.bot.utils.JunhoChoiProperties;
 import java.io.IOException;
+import java.time.ZoneId;
+import java.util.TimeZone;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -27,6 +29,9 @@ public class BotApplication {
     catch (IOException e) {
       e.printStackTrace();
     }
+
+    TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("UTC")));
+
     JDA jda = JDABuilder.createDefault(System.getProperty("discordToken"))
                         .addEventListeners(new JunhoChoiBotReady())
                         .addEventListeners(new JunhoChoiBotProtocol())
@@ -35,6 +40,6 @@ public class BotApplication {
     CallJunhoChoi callJunhoChoi = CallJunhoChoi.getInstance(jda);
 
     ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-    executorService.scheduleAtFixedRate(callJunhoChoi, 0, 30, TimeUnit.SECONDS);
+    executorService.scheduleAtFixedRate(callJunhoChoi, 0, 60, TimeUnit.SECONDS);
   }
 }

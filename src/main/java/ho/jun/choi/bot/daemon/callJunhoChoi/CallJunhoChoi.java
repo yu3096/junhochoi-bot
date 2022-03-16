@@ -52,7 +52,6 @@ public class CallJunhoChoi implements Runnable{
   public void run() {
     logger.info("Call Junho Choi Check");
     OffsetDateTime odt = OffsetDateTime.now(ZoneOffset.of("+9"));
-    System.out.println(odt.format(DateTimeFormatter.ofPattern("HHmm")));
 
     voList.forEach(vo -> {
       TextChannel textChannel = jda.getGuildById(vo.getGuildId()).getTextChannelById(vo.getTextChannelId());

@@ -21,9 +21,6 @@ public class _디버그 extends Command {
 
   @Override
   public MessageAction process(List<String> parameters) throws IOException {
-    OffsetDateTime odt = OffsetDateTime.now(ZoneOffset.of("+9"));
-    System.out.println(odt.format(DateTimeFormatter.ofPattern("HHmm")));
-
     return event.getTextChannel().sendMessage("로그에나오나? 확인필요");
   }
 }
