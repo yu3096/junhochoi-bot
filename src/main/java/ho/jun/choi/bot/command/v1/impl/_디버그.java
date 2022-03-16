@@ -8,6 +8,8 @@ import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 
 public class _디버그 extends Command {
@@ -18,13 +20,8 @@ public class _디버그 extends Command {
 
   @Override
   public MessageAction process(List<String> parameters) throws IOException {
-    Calendar cal = Calendar.getInstance(Locale.KOREA);
-    SimpleDateFormat sdf = new SimpleDateFormat();
-
-    System.out.println(cal.getTime());
-    CallJunhoChoi.getInstance().getSchedule().forEach(vo -> {
-      System.out.println(vo.getGuildId() + " // " + vo.getHH24MI());
-    });
+    OffsetDateTime odt = OffsetDateTime.now(ZoneOffset.of("+9"));
+    System.out.println(""+ odt.getMonthValue() + odt.getDayOfMonth() + odt.getHour() + odt.getMinute());
 
     return event.getTextChannel().sendMessage("로그에나오나? 확인필요");
   }
