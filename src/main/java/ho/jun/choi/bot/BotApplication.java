@@ -1,9 +1,13 @@
 package ho.jun.choi.bot;
 
+import ho.jun.choi.bot.daemon.callJunhoChoi.CallJunhoChoi;
 import ho.jun.choi.bot.listener.JunhoChoiBotProtocol;
 import ho.jun.choi.bot.listener.JunhoChoiBotReady;
 import ho.jun.choi.bot.utils.JunhoChoiProperties;
 import java.io.IOException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import javax.security.auth.login.LoginException;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -23,9 +27,14 @@ public class BotApplication {
     catch (IOException e) {
       e.printStackTrace();
     }
-    JDA api = JDABuilder.createDefault(System.getProperty("discordToken"))
+    JDA jda = JDABuilder.createDefault(System.getProperty("discordToken"))
                         .addEventListeners(new JunhoChoiBotReady())
                         .addEventListeners(new JunhoChoiBotProtocol())
                         .build();
+
+    CallJunhoChoi callJunhoChoi = CallJunhoChoi.getInstance(jda);
+
+    ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+    executorService.scheduleAtFixedRate(callJunhoChoi, 0, 1, TimeUnit.MINUTES);
   }
 }
