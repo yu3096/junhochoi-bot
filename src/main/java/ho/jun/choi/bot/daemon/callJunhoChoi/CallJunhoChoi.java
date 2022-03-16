@@ -36,8 +36,12 @@ public class CallJunhoChoi implements Runnable{
     return instance;
   }
 
-  public void addSchdule( CallJunhoChoiVo vo ){
+  public void addSchedule( CallJunhoChoiVo vo ){
     voList.add(vo);
+  }
+
+  public ArrayList<CallJunhoChoiVo> getSchedule( ){
+    return voList;
   }
 
   @Override
