@@ -21,6 +21,7 @@ sourceCompatibility = 1.8
 repositories {
     gradlePluginPortal()
     mavenCentral()
+    google()
     maven {
         name 'm2-dv8tion'
         url "https://m2.dv8tion.net/releases"
@@ -32,6 +33,8 @@ dependencies {
     implementation("com.sedmelluq:lavaplayer:1.3.77")
     implementation("ch.qos.logback:logback-classic:1.2.3")
 
+    implementation 'com.google.apis:google-api-services-youtube:v3-rev20210706-1.32.1'
+    implementation 'com.google.http-client:google-http-client-jackson2:1.39.2-sp.1'
     //testCompile group: 'junit', name: 'junit', version: '4.12'
 
 }
@@ -40,23 +43,11 @@ compileJava.options.encoding = 'UTF-8'
 
 version '1.0-SNAPSHOT'
 
-jar {
-    finalizedBy shadowJar
-}
-
+/*
 jar {
     manifest {
          attributes 'Main-Class': 'ho.jun.choi.bot.BotApplication',
                     "Class-Path": configurations.compileClasspath.collect {it.toURI().toString()}.join(' ')
     }
-    /*
-    from {
-        configurations.runtimeClasspath.findAll {
-            it.name.endsWith('jar')
-        }
-        .collect {
-            it
-        }
-    }
-    */
 }
+*/

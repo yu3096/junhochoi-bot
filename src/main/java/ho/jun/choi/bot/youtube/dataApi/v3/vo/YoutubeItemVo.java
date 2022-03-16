@@ -1,3 +1,4 @@
+/*
 package ho.jun.choi.bot.youtube.dataApi.v3.vo;
 
 import com.google.api.services.youtube.model.ResourceId;
@@ -27,3 +28,4 @@ public class YoutubeItemVo {
     this.title = title;
   }
 }
+*/
