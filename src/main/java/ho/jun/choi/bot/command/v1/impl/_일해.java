@@ -23,7 +23,7 @@ public class _일해 extends Command {
     vo.setTextChannelId(event.getTextChannel().getIdLong());
     vo.setHH24MI(parameters.get(1).replaceAll(":", ""));
 
-    CallJunhoChoi.getInstance().addSchdule(vo);
+    CallJunhoChoi.getInstance().addSchedule(vo);
 
     return event.getTextChannel().sendMessage("업무시간 등록 완료");
   }
