@@ -2,6 +2,8 @@ package ho.jun.choi.bot.command.v1.impl;
 
 import ho.jun.choi.bot.command.Command;
 import java.io.IOException;
+import java.util.List;
+
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
@@ -9,14 +11,14 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
-public class 들어와 extends Command {
+public class _들어와 extends Command {
 
-  public 들어와(MessageReceivedEvent event) {
+  public _들어와(MessageReceivedEvent event) {
     super(event);
   }
 
   @Override
-  public MessageAction process(String parameter) throws IOException {
+  public MessageAction process(List<String> parameters) throws IOException {
     TextChannel textChannel = event.getTextChannel();
     if( !event.getGuild().getSelfMember().hasPermission(textChannel, Permission.VOICE_CONNECT) ) {
       return textChannel.sendMessage("VOICE_CONNECT 권한이 없습니다.");

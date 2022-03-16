@@ -10,15 +10,15 @@ import java.util.List;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
-public class 명령어 extends Command {
+public class _명령어 extends Command {
   private static String _COMMAND_PREFIX = (String) JunhoChoiProperties.getOrDefault("command.prefix.normal", "!준호");;
-  public 명령어(MessageReceivedEvent event) {
+  public _명령어(MessageReceivedEvent event) {
     super(event);
   }
 
   @Override
-  public MessageAction process(String parameter) throws IOException {
-    if( null == parameter || "".equals( parameter ) ){
+  public MessageAction process(List<String> parameters) throws IOException {
+    if( null == parameters || "".equals( parameters.get(1) ) ){
       List<String> resourceList = new ArrayList<String>();
       StringBuffer helpMsg = new StringBuffer();
 
@@ -34,7 +34,7 @@ public class 명령어 extends Command {
       return event.getChannel().sendMessage(helpMsg);
     }
     else{
-      return help(parameter);
+      return help(parameters.get(1));
     }
   }
 
