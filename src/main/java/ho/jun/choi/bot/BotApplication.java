@@ -35,6 +35,6 @@ public class BotApplication {
     CallJunhoChoi callJunhoChoi = CallJunhoChoi.getInstance(jda);
 
     ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-    executorService.scheduleAtFixedRate(callJunhoChoi, 0, 1, TimeUnit.MINUTES);
+    executorService.scheduleAtFixedRate(callJunhoChoi, 0, 30, TimeUnit.SECONDS);
   }
 }

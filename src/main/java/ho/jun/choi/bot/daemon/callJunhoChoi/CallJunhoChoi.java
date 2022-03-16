@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class CallJunhoChoi implements Runnable{
@@ -48,7 +49,7 @@ public class CallJunhoChoi implements Runnable{
   public void run() {
     logger.info("Call Junho Choi Check");
     SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
-    Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Seoul"));
+    Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Seoul"), Locale.KOREA);
 
     voList.forEach(vo -> {
       TextChannel textChannel = jda.getGuildById(vo.getGuildId()).getTextChannelById(vo.getTextChannelId());
