@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
@@ -48,16 +51,13 @@ public class CallJunhoChoi implements Runnable{
   @Override
   public void run() {
     logger.info("Call Junho Choi Check");
-    SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
-    Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Asia/Seoul"), Locale.KOREA);
+    OffsetDateTime odt = OffsetDateTime.now(ZoneOffset.of("+9"));
+    System.out.println(odt.format(DateTimeFormatter.ofPattern("HHmm")));
 
     voList.forEach(vo -> {
       TextChannel textChannel = jda.getGuildById(vo.getGuildId()).getTextChannelById(vo.getTextChannelId());
-      logger.info("{}", vo.getHH24MI().equals( sdf.format(cal.getTime()) ));
-      logger.info("{}", vo.getHH24MI());
-      logger.info("{}", sdf.format(cal.getTime()) );
 
-      if( vo.getHH24MI().equals( sdf.format(cal.getTime()) ) ) {
+      if( vo.getHH24MI().equals( odt.format(DateTimeFormatter.ofPattern("HHmm")) ) ) {
         textChannel.sendMessage("<@"+ vo.getOwnerId() + ">" + " 업무해").queue();
       }
     });
