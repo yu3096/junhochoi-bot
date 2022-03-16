@@ -7,7 +7,8 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
 import java.io.IOException;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class _디버그 extends Command {
 
@@ -17,6 +18,10 @@ public class _디버그 extends Command {
 
   @Override
   public MessageAction process(List<String> parameters) throws IOException {
+    Calendar cal = Calendar.getInstance(Locale.KOREA);
+    SimpleDateFormat sdf = new SimpleDateFormat();
+
+    System.out.println(cal.getTime());
     CallJunhoChoi.getInstance().getSchedule().forEach(vo -> {
       System.out.println(vo.getGuildId() + " // " + vo.getHH24MI());
     });
