@@ -35,7 +35,6 @@ public class BotApplication {
     JDA jda = JDABuilder.createDefault(System.getProperty("discordToken"))
                         .addEventListeners(new JunhoChoiBotReady())
                         .addEventListeners(new JunhoChoiBotCommandProtocol())
-                        //.addEventListeners(new JunhoChoiBotPlayerProtocol())
                         .build();
 
     CallJunhoChoi callJunhoChoi = CallJunhoChoi.getInstance(jda);
