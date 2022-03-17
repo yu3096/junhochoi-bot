@@ -14,6 +14,6 @@ public class _유부녀 extends Command {
 
   @Override
   public MessageAction process(List<String> parameters) throws IOException {
-    return event.getTextChannel().sendMessage("너무좋아~");
+    return event.getTextChannel().sendMessage("유부녀 최고야");
   }
 }
