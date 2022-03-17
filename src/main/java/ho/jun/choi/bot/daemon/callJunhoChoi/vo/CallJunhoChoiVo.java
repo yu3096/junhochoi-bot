@@ -38,4 +38,14 @@ public class CallJunhoChoiVo {
   public void setHH24MI(String HH24MI) {
     this.HH24MI = HH24MI;
   }
+
+  @Override
+  public String toString() {
+    return "CallJunhoChoiVo{" +
+        "guildId=" + guildId +
+        ", ownerId=" + ownerId +
+        ", textChannelId=" + textChannelId +
+        ", HH24MI='" + HH24MI + '\'' +
+        '}';
+  }
 }

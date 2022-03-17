@@ -50,7 +50,6 @@ public class CallJunhoChoi implements Runnable{
 
   @Override
   public void run() {
-    logger.info("Call Junho Choi Check");
     OffsetDateTime odt = OffsetDateTime.now(ZoneOffset.of("+9"));
 
     voList.forEach(vo -> {

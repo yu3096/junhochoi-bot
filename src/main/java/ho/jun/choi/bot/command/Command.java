@@ -9,12 +9,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
 public abstract class Command {
-  /*
-  protected MessageChannel channel;
-  public Command(MessageChannel channel) {
-    this.channel = channel;
-  }
-  */
   protected MessageReceivedEvent event;
 
   public Command(MessageReceivedEvent event) {

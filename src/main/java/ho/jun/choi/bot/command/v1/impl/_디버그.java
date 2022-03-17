@@ -21,6 +21,14 @@ public class _디버그 extends Command {
 
   @Override
   public MessageAction process(List<String> parameters) throws IOException {
-    return event.getTextChannel().sendMessage("로그에나오나? 확인필요");
+    OffsetDateTime koreanTime = OffsetDateTime.now(ZoneOffset.of("+9"));
+    OffsetDateTime UTCTime = OffsetDateTime.now();
+    StringBuffer msg = new StringBuffer();
+    msg.append("Korea Time: " + koreanTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    msg.append("\nUTC Time: " + UTCTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+    msg.append("\nDefault TimeZon: " + TimeZone.getDefault().getDisplayName());
+    msg.append("\nCall Time Setting Info: " + CallJunhoChoi.getInstance().getSchedule());
+
+    return event.getTextChannel().sendMessage(msg);
   }
 }

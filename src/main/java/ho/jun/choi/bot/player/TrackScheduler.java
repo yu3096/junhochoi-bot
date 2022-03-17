@@ -1,17 +1,19 @@
-package ho.jun.choi.bot.musicPlayer;
+package ho.jun.choi.bot.player;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class JunhoChoiTrackScheduler extends AudioEventAdapter {
+public class TrackScheduler extends AudioEventAdapter {
   private final AudioPlayer player;
   private final BlockingQueue<AudioTrack> queue;
 
-  public JunhoChoiTrackScheduler(AudioPlayer player) {
+
+  public TrackScheduler(AudioPlayer player) {
     this.player = player;
     this.queue = new LinkedBlockingQueue<>();
   }

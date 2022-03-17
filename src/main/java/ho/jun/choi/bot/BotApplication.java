@@ -1,7 +1,7 @@
 package ho.jun.choi.bot;
 
 import ho.jun.choi.bot.daemon.callJunhoChoi.CallJunhoChoi;
-import ho.jun.choi.bot.listener.JunhoChoiBotProtocol;
+import ho.jun.choi.bot.listener.JunhoChoiBotCommandProtocol;
 import ho.jun.choi.bot.listener.JunhoChoiBotReady;
 import ho.jun.choi.bot.utils.JunhoChoiProperties;
 import java.io.IOException;
@@ -34,7 +34,8 @@ public class BotApplication {
 
     JDA jda = JDABuilder.createDefault(System.getProperty("discordToken"))
                         .addEventListeners(new JunhoChoiBotReady())
-                        .addEventListeners(new JunhoChoiBotProtocol())
+                        .addEventListeners(new JunhoChoiBotCommandProtocol())
+                        //.addEventListeners(new JunhoChoiBotPlayerProtocol())
                         .build();
 
     CallJunhoChoi callJunhoChoi = CallJunhoChoi.getInstance(jda);
