@@ -9,9 +9,9 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
-public class _4인 extends Command{
+public class _4인_20220318_제거 extends Command{
 
-  public _4인(MessageReceivedEvent event) {
+  public _4인_20220318_제거(MessageReceivedEvent event) {
       super(event);
   }
 

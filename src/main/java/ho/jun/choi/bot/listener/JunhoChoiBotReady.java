@@ -3,6 +3,7 @@ package ho.jun.choi.bot.listener;
 import javax.annotation.Nonnull;
 
 import ho.jun.choi.bot.storage._STORAGE_BY_GUILDID;
+import ho.jun.choi.bot.utils.JunhoChoiProperties;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
@@ -12,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class JunhoChoiBotReady implements EventListener {
   private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+  private static String _CHAT_DIR = (String) JunhoChoiProperties.getOrDefault("command.chat.dir", "");
   @Override
   public void onEvent(@Nonnull GenericEvent event) {
     logger.info(event.getJDA().getStatus().toString());

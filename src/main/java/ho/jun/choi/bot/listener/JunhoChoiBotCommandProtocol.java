@@ -8,7 +8,12 @@ import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import ho.jun.choi.bot.player.GuildMusicManager;
+import ho.jun.choi.bot.storage._CHAT_KEYWORD;
+import ho.jun.choi.bot.storage._STORAGE_BY_GUILDID;
 import ho.jun.choi.bot.utils.JunhoChoiProperties;
+
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -93,6 +98,27 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
     }
     else if( content.startsWith(_COMMAND_PREFIX_ERROR) ){
       channel.sendMessage(_COMMAND_PREFIX + "임.").queue();
+    }
+    else{
+      try {
+        String finalContent = content;
+        _CHAT_KEYWORD.getInstance().getKeywords().forEach(s -> {
+          if( finalContent.indexOf(s) > -1 ){
+            try {
+              String ownerId = event.getGuild().getOwnerId();
+              String msg = _CHAT_KEYWORD.getInstance().getResponse(s).replaceAll("#\\{ownerId}", ownerId);
+              channel.sendMessage(msg).queue();
+            }
+            catch (IOException e) {
+              e.printStackTrace();
+            }
+          }
+        });
+      }
+      catch (IOException e) {
+        e.printStackTrace();
+      }
+
     }
   }
 

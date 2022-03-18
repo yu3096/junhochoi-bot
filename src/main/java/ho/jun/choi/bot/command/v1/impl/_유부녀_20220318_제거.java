@@ -7,8 +7,8 @@ import net.dv8tion.jda.api.requests.restaction.MessageAction;
 import java.io.IOException;
 import java.util.List;
 
-public class _유부녀 extends Command {
-  public _유부녀(MessageReceivedEvent event) {
+public class _유부녀_20220318_제거 extends Command {
+  public _유부녀_20220318_제거(MessageReceivedEvent event) {
     super(event);
   }
 
