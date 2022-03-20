@@ -23,6 +23,14 @@ public class _말해 extends Command {
     String msgChannelId = event.getMessage().getTextChannel().getId();
     String msgGuildId = event.getMessage().getGuild().getId();
 
+    System.out.println(adminGuildId);
+    System.out.println(adminOwnerId);
+    System.out.println(adminChannelId);
+
+    System.out.println(msgAuthorId);
+    System.out.println(msgChannelId);
+    System.out.println(msgGuildId);
+
     if( adminGuildId.equals(msgGuildId)
         && adminChannelId.equals(msgChannelId)
         && adminOwnerId.equals(msgAuthorId) ){
