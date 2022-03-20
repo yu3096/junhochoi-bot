@@ -43,7 +43,7 @@ public class _명령어 extends Command {
             String command = jarEntrty.getName().replaceAll(commandPackage + "/", "")
                                                 .replaceFirst("\\_", " ")
                                                 .replaceAll("\\.class", "");
-            if( this.in(command, "말해", "디버그") ){
+            if( !this.in(command, "말해", "디버그") ){
               helpMsg.append("\n" + _COMMAND_PREFIX + command);
             }
           }
@@ -52,7 +52,7 @@ public class _명령어 extends Command {
       else{
         String[] commands = new File(this.getClass().getResource("").getPath()).list();
         for(String command: commands){
-          if( this.in(command, "말해", "디버그") ){
+          if( !this.in(command, "말해", "디버그") ){
             helpMsg.append(_COMMAND_PREFIX + command.replaceAll("_", " ").replaceAll(".class", "") + "\n");
           }
         }
