@@ -5,6 +5,8 @@ import ho.jun.choi.bot.utils.JunhoChoiProperties;
 
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +18,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class _명령어 extends Command {
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
   private static String _COMMAND_PREFIX = (String) JunhoChoiProperties.getOrDefault("command.prefix.normal", "!준호");;
   private static String _COMMAND_DIR = (String) JunhoChoiProperties.getOrDefault("command.impl.dir", "");
 
@@ -43,18 +46,18 @@ public class _명령어 extends Command {
             String command = jarEntrty.getName().replaceAll(commandPackage + "/", "")
                                                 .replaceFirst("\\_", " ")
                                                 .replaceAll("\\.class", "");
-            if( !this.in(command, "말해", "디버그") ){
-              helpMsg.append("\n" + _COMMAND_PREFIX + command);
-            }
+
+            helpMsg.append("\n" + _COMMAND_PREFIX + command);
           }
         }
       }
       else{
         String[] commands = new File(this.getClass().getResource("").getPath()).list();
         for(String command: commands){
-          if( !this.in(command, "말해", "디버그") ){
-            helpMsg.append(_COMMAND_PREFIX + command.replaceAll("_", " ").replaceAll(".class", "") + "\n");
-          }
+          command = command.replaceFirst("\\_", " ")
+                           .replaceAll("\\.class", "");
+
+          helpMsg.append("\n" + _COMMAND_PREFIX + command);
         }
       }
       helpMsg.append("```");
@@ -79,14 +82,5 @@ public class _명령어 extends Command {
     help.append(" -!준호 명령어 [명령어]");
     help.append("```");
     return event.getTextChannel().sendMessage(help);
-  }
-
-  private boolean in(String str, String... inData){
-    for(String data : inData){
-      if( str.equals(data) ){
-        return true;
-      }
-    }
-    return false;
   }
 }
