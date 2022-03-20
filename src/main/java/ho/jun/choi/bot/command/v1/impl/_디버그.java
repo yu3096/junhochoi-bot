@@ -26,7 +26,7 @@ public class _디버그 extends Command {
     msg.append("\nUTC Time: " + UTCTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     msg.append("\nDefault TimeZon: " + TimeZone.getDefault().getDisplayName());
     msg.append("\nCall Time Setting Info: " + CallJunhoChoi.getInstance().getSchedule());
-
+    msg.append(this.getClass().getResource("").getPath());
     return event.getTextChannel().sendMessage(msg);
   }
 
