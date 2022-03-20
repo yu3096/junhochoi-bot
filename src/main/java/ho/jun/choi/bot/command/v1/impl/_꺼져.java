@@ -21,7 +21,7 @@ public class _꺼져 extends Command {
       return textChannel.sendMessage("없어");
     }
     event.getGuild().getAudioManager().closeAudioConnection();
-    return null;
+    return textChannel.sendMessage("힝");
   }
 
   @Override
