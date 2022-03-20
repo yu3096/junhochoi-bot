@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Enumeration;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 public class _명령어 extends Command {
   private static String _COMMAND_PREFIX = (String) JunhoChoiProperties.getOrDefault("command.prefix.normal", "!준호");;
@@ -25,13 +28,24 @@ public class _명령어 extends Command {
     if( null == parameters || "".equals( parameters ) ){
       StringBuffer helpMsg = new StringBuffer();
 
-      String[] commands = new File(this.getClass().getResource("").getPath()).list();
+      //String[] commands = new File(this.getClass().getResource("").getPath()).list();
+      File jarFile = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
+
       helpMsg.append("```최준호봇의 명령어 리스트입니다.\n");
-      for(String command: commands){
-        helpMsg.append(_COMMAND_PREFIX + command.replaceAll("_", " ").replaceAll(".class", "") + "\n");
+      if( jarFile.isFile() ){ //Jar Run
+        JarFile jar = new JarFile(jarFile);
+        Enumeration<JarEntry> entries = jar.entries();
+        while( entries.hasMoreElements() ){
+          helpMsg.append(_COMMAND_PREFIX + entries.nextElement().getName().replaceAll("_", " ").replaceAll(".class", "") + "\n");
+        }
+      }
+      else{
+        String[] commands = new File(this.getClass().getResource("").getPath()).list();
+        for(String command: commands){
+          helpMsg.append(_COMMAND_PREFIX + command.replaceAll("_", " ").replaceAll(".class", "") + "\n");
+        }
       }
       helpMsg.append("```");
-
       return event.getChannel().sendMessage(helpMsg);
     }
     else{
