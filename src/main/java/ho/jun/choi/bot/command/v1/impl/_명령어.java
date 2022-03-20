@@ -40,17 +40,21 @@ public class _명령어 extends Command {
           String commandPackage = _COMMAND_DIR.replaceAll("\\.", "/");
 
           if( !jarEntrty.isDirectory() && jarEntrty.getName().startsWith(commandPackage) ){
-            helpMsg.append("\n" + jarEntrty.getName().replaceAll(commandPackage + "/", "")
-                                                     .replaceFirst("\\_", "")
-                                                     .replaceAll("\\.class", "")
-            );
+            String command = jarEntrty.getName().replaceAll(commandPackage + "/", "")
+                                                .replaceFirst("\\_", " ")
+                                                .replaceAll("\\.class", "");
+            if( this.in(command, "말해", "디버그") ){
+              helpMsg.append("\n" + _COMMAND_PREFIX + command);
+            }
           }
         }
       }
       else{
         String[] commands = new File(this.getClass().getResource("").getPath()).list();
         for(String command: commands){
-          helpMsg.append(_COMMAND_PREFIX + command.replaceAll("_", " ").replaceAll(".class", "") + "\n");
+          if( this.in(command, "말해", "디버그") ){
+            helpMsg.append(_COMMAND_PREFIX + command.replaceAll("_", " ").replaceAll(".class", "") + "\n");
+          }
         }
       }
       helpMsg.append("```");
@@ -75,5 +79,14 @@ public class _명령어 extends Command {
     help.append(" -!준호 명령어 [명령어]");
     help.append("```");
     return event.getTextChannel().sendMessage(help);
+  }
+
+  private boolean in(String str, String... inData){
+    for(String data : inData){
+      if( str.equals(data) ){
+        return true;
+      }
+    }
+    return false;
   }
 }

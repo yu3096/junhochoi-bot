@@ -16,6 +16,7 @@ public class _말해 extends Command {
 
   @Override
   public MessageAction process(String parameters) throws IOException {
+    /*
     String adminGuildId = _COMMON_PROPERTIES.getInstance().getProperties("ADMIN_GUILD_ID");
     String adminOwnerId = _COMMON_PROPERTIES.getInstance().getProperties("ADMIN_OWNER_ID");
     String adminChannelId = _COMMON_PROPERTIES.getInstance().getProperties("ADMIN_CHANNEL_ID");
@@ -35,7 +36,7 @@ public class _말해 extends Command {
         event.getJDA().getGuildById(guildId).getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(guildId, "textChannelId")).sendMessage(parameters).queue();
       });
     }
-
+*/
     return null;
   }
 
