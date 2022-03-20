@@ -2,6 +2,7 @@ package ho.jun.choi.bot.command.v1.impl;
 
 import ho.jun.choi.bot.command.Command;
 import ho.jun.choi.bot.daemon.callJunhoChoi.CallJunhoChoi;
+import ho.jun.choi.bot.utils.JunhoChoiProperties;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
@@ -15,6 +16,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class _디버그 extends Command {
+  private static String _COMMAND_DIR = (String) JunhoChoiProperties.getOrDefault("command.impl.dir", "");
 
   public _디버그(MessageReceivedEvent event) {
     super(event);
@@ -29,18 +31,6 @@ public class _디버그 extends Command {
     msg.append("\nUTC Time: " + UTCTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     msg.append("\nDefault TimeZon: " + TimeZone.getDefault().getDisplayName());
     msg.append("\nCall Time Setting Info: " + CallJunhoChoi.getInstance().getSchedule());
-
-    File jarFile = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-    if( jarFile.isFile() ){ //Jar Run
-      JarFile jar = new JarFile(jarFile);
-      Enumeration<JarEntry> entries = jar.entries();
-      while( entries.hasMoreElements() ){
-        if( entries.nextElement().getName().startsWith("ho/jun/choi/bot/command/v1/impl") ){
-          System.out.println(entries.nextElement().getName());
-          msg.append("\n" + entries.nextElement().getName());
-        }
-      }
-    }
 
     return event.getTextChannel().sendMessage(msg);
   }

@@ -22,7 +22,6 @@ import javax.annotation.Nonnull;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.managers.AudioManager;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,38 +45,6 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
 
       String[] command = content.split("[\\s\\n]", 2);
       try {
-        /*
-        if ("불러봐".equals(command[0]) && command.length == 2) {
-          loadAndPlay(event.getTextChannel(), command[1]);
-        }
-        else if ("다음곡".equals(command[0])) {
-          skipTrack(event.getTextChannel());
-        }
-        else if("닥쳐".equals(command[0])){
-          controlVolume(event.getTextChannel(), 0);
-        }
-        else if("소리".equals(command[0])){
-          controlVolume(event.getTextChannel(), Integer.parseInt(command[1]));
-        }
-        else {
-          Class<?> clazz = Class.forName(_COMMAND_DIR + "._" + command[0]);
-          Constructor<?> constructor = clazz.getConstructor(MessageReceivedEvent.class);
-          Object obj = constructor.newInstance(event);
-
-          Method method = clazz.getDeclaredMethod("process", String.class);
-          MessageAction ma;
-          if( command.length > 1 ){
-            ma = (MessageAction) method.invoke(obj, command[1]);
-          }
-          else{
-            ma = (MessageAction) method.invoke(obj, "");
-          }
-
-          if (null != ma && !ma.isEmpty()) {
-            ma.queue();
-          }
-        }
-        */
         Class<?> clazz = Class.forName(_COMMAND_DIR + "._" + command[0]);
         Constructor<?> constructor = clazz.getConstructor(MessageReceivedEvent.class);
         Object obj = constructor.newInstance(event);

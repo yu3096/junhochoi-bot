@@ -36,7 +36,15 @@ public class _명령어 extends Command {
         JarFile jar = new JarFile(jarFile);
         Enumeration<JarEntry> entries = jar.entries();
         while( entries.hasMoreElements() ){
-          helpMsg.append(_COMMAND_PREFIX + entries.nextElement().getName().replaceAll("_", " ").replaceAll(".class", "") + "\n");
+          JarEntry jarEntrty = entries.nextElement();
+          String commandPackage = _COMMAND_DIR.replaceAll("\\.", "/");
+
+          if( !jarEntrty.isDirectory() && jarEntrty.getName().startsWith(commandPackage) ){
+            helpMsg.append("\n" + jarEntrty.getName().replaceAll(commandPackage + "/", "")
+                                                     .replaceFirst("\\_", "")
+                                                     .replaceAll("\\.class", "")
+            );
+          }
         }
       }
       else{
