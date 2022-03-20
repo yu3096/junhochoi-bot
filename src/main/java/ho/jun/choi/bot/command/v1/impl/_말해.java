@@ -1,6 +1,7 @@
 package ho.jun.choi.bot.command.v1.impl;
 
 import ho.jun.choi.bot.command.Command;
+import ho.jun.choi.bot.storage._COMMON_PROPERTIES;
 import ho.jun.choi.bot.storage._STORAGE_BY_GUILDID;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
@@ -15,21 +16,13 @@ public class _말해 extends Command {
 
   @Override
   public MessageAction process(String parameters) throws IOException {
-    String adminGuildId = System.getProperty("ADMIN_GUILD_ID");
-    String adminOwnerId = System.getProperty("ADMIN_OWNER_ID");
-    String adminChannelId = System.getProperty("ADMIN_CHANNEL_ID");
+    String adminGuildId = _COMMON_PROPERTIES.getInstance().getProperties("ADMIN_GUILD_ID");
+    String adminOwnerId = _COMMON_PROPERTIES.getInstance().getProperties("ADMIN_OWNER_ID");
+    String adminChannelId = _COMMON_PROPERTIES.getInstance().getProperties("ADMIN_CHANNEL_ID");
 
     String msgAuthorId = event.getMessage().getAuthor().getId();
     String msgChannelId = event.getMessage().getTextChannel().getId();
     String msgGuildId = event.getMessage().getGuild().getId();
-
-    System.out.println(adminGuildId);
-    System.out.println(adminOwnerId);
-    System.out.println(adminChannelId);
-
-    System.out.println(msgAuthorId);
-    System.out.println(msgChannelId);
-    System.out.println(msgGuildId);
 
     if( adminGuildId.equals(msgGuildId)
         && adminChannelId.equals(msgChannelId)
