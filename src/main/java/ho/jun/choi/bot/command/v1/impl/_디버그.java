@@ -35,8 +35,10 @@ public class _디버그 extends Command {
       JarFile jar = new JarFile(jarFile);
       Enumeration<JarEntry> entries = jar.entries();
       while( entries.hasMoreElements() ){
-        System.out.println(entries.nextElement().getName());
-        msg.append("\n" + entries.nextElement().getName());
+        if( entries.nextElement().getName().startsWith("ho/jun/choi/bot/command/v1/impl") ){
+          System.out.println(entries.nextElement().getName());
+          msg.append("\n" + entries.nextElement().getName());
+        }
       }
     }
 
