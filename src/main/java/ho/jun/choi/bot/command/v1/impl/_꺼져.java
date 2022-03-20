@@ -2,7 +2,6 @@ package ho.jun.choi.bot.command.v1.impl;
 
 import ho.jun.choi.bot.command.Command;
 import java.io.IOException;
-import java.util.List;
 
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
@@ -15,7 +14,7 @@ public class _꺼져 extends Command {
   }
 
   @Override
-  public MessageAction process(List<String> parameters) throws IOException {
+  public MessageAction process(String parameters) throws IOException {
     TextChannel textChannel = event.getTextChannel();
     VoiceChannel connectedChannel = event.getGuild().getSelfMember().getVoiceState().getChannel();
     if(connectedChannel == null) {
@@ -23,5 +22,14 @@ public class _꺼져 extends Command {
     }
     event.getGuild().getAudioManager().closeAudioConnection();
     return null;
+  }
+
+  @Override
+  public MessageAction help() {
+    StringBuffer help = new StringBuffer();
+    help.append("```voice 채널에서 나간다\n");
+    help.append(" -!준호 꺼져");
+    help.append("```");
+    return event.getTextChannel().sendMessage(help);
   }
 }

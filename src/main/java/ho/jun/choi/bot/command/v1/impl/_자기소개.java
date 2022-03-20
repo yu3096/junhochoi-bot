@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
 import java.io.IOException;
-import java.util.List;
 
 public class _자기소개 extends Command {
 
@@ -15,9 +14,18 @@ public class _자기소개 extends Command {
   }
 
   @Override
-  public MessageAction process(List<String> parameters) throws IOException {
+  public MessageAction process(String parameters) throws IOException {
     TextChannel textChannel = event.getTextChannel();
 
-    return textChannel.sendMessage("Ver. Alpha");
+    return textChannel.sendMessage("```Ver. Alpha\n -dateOfChange: 2022.03.20```");
+  }
+
+  @Override
+  public MessageAction help() {
+    StringBuffer help = new StringBuffer();
+    help.append("```버전확인용 명령어\n");
+    help.append(" -!준호 자기소개");
+    help.append("```");
+    return event.getTextChannel().sendMessage(help);
   }
 }

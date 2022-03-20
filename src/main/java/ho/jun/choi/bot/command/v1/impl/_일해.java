@@ -7,7 +7,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
 import java.io.IOException;
-import java.util.List;
 
 public class _일해 extends Command {
 
@@ -16,7 +15,8 @@ public class _일해 extends Command {
   }
 
   @Override
-  public MessageAction process(List<String> parameters) throws IOException {
+  public MessageAction process(String parameters) throws IOException {
+    /*
     CallJunhoChoiVo vo = new CallJunhoChoiVo();
     vo.setGuildId(event.getGuild().getIdLong());
     vo.setOwnerId(event.getGuild().getOwnerIdLong());
@@ -24,7 +24,19 @@ public class _일해 extends Command {
     vo.setHH24MI(parameters.get(1).replaceAll(":", ""));
 
     CallJunhoChoi.getInstance().addSchedule(vo);
+    */
+    return event.getTextChannel().sendMessage("2022.03.20 비 정상 동작으로 인한 수정 중");
+  }
 
-    return event.getTextChannel().sendMessage("업무시간 등록 완료");
+  @Override
+  public MessageAction help() {
+    StringBuffer help = new StringBuffer();
+    /*
+    help.append("```지정된 시간에 준수를 호출한다.");
+    help.append(" -!준호 일해 HH24:MI");
+    help.append("```");
+    */
+    help.append("2022.03.20 비 정상 동작으로 인한 명령어 수정 중");
+    return event.getTextChannel().sendMessage(help);
   }
 }

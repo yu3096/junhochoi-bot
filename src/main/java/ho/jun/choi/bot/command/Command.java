@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
@@ -15,8 +16,10 @@ public abstract class Command {
     this.event = event;
   }
 
-  public abstract MessageAction process(List<String> parameters) throws IOException;
+  public abstract MessageAction process(String parameters) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException;
+  public abstract MessageAction help();
 
+/*
   public MessageAction help() throws IOException {
     return this.help(this.getClass().getSimpleName());
   }
@@ -36,4 +39,5 @@ public abstract class Command {
 
     return event.getChannel().sendMessage(helpText.toString());
   }
+ */
 }
