@@ -35,8 +35,8 @@ public class _디버그 extends Command {
       JarFile jar = new JarFile(jarFile);
       Enumeration<JarEntry> entries = jar.entries();
       while( entries.hasMoreElements() ){
-        System.out.println(entries);
-        msg.append("\n" + entries);
+        System.out.println(entries.nextElement().getName());
+        msg.append("\n" + entries.nextElement().getName());
       }
     }
 
