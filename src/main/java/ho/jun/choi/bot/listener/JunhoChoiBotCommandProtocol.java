@@ -112,14 +112,14 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
   @Override
   public void onGuildVoiceJoin(@NotNull GuildVoiceJoinEvent event) {
     if( event.getMember().isOwner() ){
-      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("섹스섹스최준수입니다.").queue();
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@284576455390658560> 헬스 몇시?").queue();
     }
   }
 
   @Override
   public void onGuildVoiceLeave(@NotNull GuildVoiceLeaveEvent event) {
     if( event.getMember().isOwner() ){
-      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("섹스섹스최준수갑니다.").queue();
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("잘자요.").queue();
     }
   }
 }
