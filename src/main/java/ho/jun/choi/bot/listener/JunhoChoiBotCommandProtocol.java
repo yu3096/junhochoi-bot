@@ -9,6 +9,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import ho.jun.choi.bot.player.GuildMusicManager;
 import ho.jun.choi.bot.storage._CHAT_KEYWORD;
+import ho.jun.choi.bot.storage._STORAGE_BY_GUILDID;
 import ho.jun.choi.bot.utils.JunhoChoiProperties;
 
 import java.io.IOException;
@@ -20,9 +21,12 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 
 import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.events.guild.voice.GuildVoiceJoinEvent;
+import net.dv8tion.jda.api.events.guild.voice.GuildVoiceLeaveEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,6 +106,20 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
         e.printStackTrace();
       }
 
+    }
+  }
+
+  @Override
+  public void onGuildVoiceJoin(@NotNull GuildVoiceJoinEvent event) {
+    if( event.getMember().isOwner() ){
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("섹스섹스최준수입니다.").queue();
+    }
+  }
+
+  @Override
+  public void onGuildVoiceLeave(@NotNull GuildVoiceLeaveEvent event) {
+    if( event.getMember().isOwner() ){
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("섹스섹스최준수갑니다.").queue();
     }
   }
 }
