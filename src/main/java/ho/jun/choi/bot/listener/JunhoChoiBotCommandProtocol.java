@@ -115,7 +115,7 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@284576455390658560> 헬스 몇시?").queue();
     }
     else if( "331068120649433088".equals(event.getMember().getId()) ){
-      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@331068120649433088 >병신").queue();
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@331068120649433088>병신").queue();
     }
     else if( "317933061578686464".equals(event.getMember().getId()) ){ //강수진
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@241051895781785600> 쟈기 나 왔어").queue();
@@ -128,7 +128,7 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("잘자요.").queue();
     }
     else if( "331068120649433088".equals(event.getMember().getId()) ){ //김태훈
-      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@331068120649433088 >병신").queue();
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@331068120649433088>병신").queue();
     }
   }
 }
