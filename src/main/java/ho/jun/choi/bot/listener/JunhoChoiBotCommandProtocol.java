@@ -114,6 +114,9 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
     if( event.getMember().isOwner() ){
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@284576455390658560> 헬스 몇시?").queue();
     }
+    else if( "317933061578686464".equals(event.getMember().getId()) ){
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@241051895781785600> 쟈기 나 왔어").queue();
+    }
   }
 
   @Override
