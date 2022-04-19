@@ -111,6 +111,7 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
 
   @Override
   public void onGuildVoiceJoin(@NotNull GuildVoiceJoinEvent event) {
+    /*
     if( event.getMember().isOwner() ){
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@284576455390658560> 헬스 몇시?").queue();
     }
@@ -121,17 +122,25 @@ public class JunhoChoiBotCommandProtocol extends ListenerAdapter {
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@241051895781785600> 쟈기 나 왔어").queue();
     }
     else if( "240850958844690434".equals(event.getMember().getId()) ){ //현석
-      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@241051895781785600> 딥락갤?").queue();
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("딥락갤?").queue();
     }
+    */
   }
 
   @Override
   public void onGuildVoiceLeave(@NotNull GuildVoiceLeaveEvent event) {
+    /*
     if( event.getMember().isOwner() ){
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("잘자요.").queue();
     }
     else if( "331068120649433088".equals(event.getMember().getId()) ){ //김태훈
       event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("<@331068120649433088>병신").queue();
     }
+    */
+    /*
+    else if( "241051895781785600".equals(event.getMember().getId()) ){ //수동
+      event.getJDA().getTextChannelById(_STORAGE_BY_GUILDID.getInstance().get(event.getGuild().getIdLong(), "textChannelId")).sendMessage("3번 늑골 나감").queue();
+    }
+    */
   }
 }
